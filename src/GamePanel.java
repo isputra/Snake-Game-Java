@@ -47,14 +47,14 @@ public class GamePanel extends JPanel implements ActionListener {
             g2d.fillOval(food.position.x * UNIT_SIZE, food.position.y* UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
         }
 
-        g2d.setColor(Color.MAGENTA);
+        g2d.setColor(new Color(0, 128, 128));
         for (Position body: game.snake.body){
             //System.out.println("Drawing Body X: "+body.x+", Y: "+body.y);
             g2d.fillRect(body.x *UNIT_SIZE, body.y * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
         }
 
         //System.out.println("Drawing Head X: "+game.snake.head.x+", Y: "+game.snake.head.y);
-        g2d.setColor(Color.BLUE);
+        g2d.setColor(new Color(0, 192, 128));
         g2d.fillRect(game.snake.head.x * UNIT_SIZE, game.snake.head.y * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
 
         Toolkit.getDefaultToolkit().sync(); // necessary for linux users to draw  and animate image correctly
@@ -63,8 +63,10 @@ public class GamePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        game.update();
-        repaint();
+        if(!game.isGameOver()){
+            game.update();
+            repaint();
+        }
     }
 
     public class MyKeyAdapter extends KeyAdapter{

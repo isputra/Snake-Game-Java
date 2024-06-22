@@ -6,6 +6,7 @@ public class Snake {
     private int bodyLength;
     private final int xMax;
     private final int yMax;
+    private boolean isAlive = true;
     public enum Direction {
         KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT;
         public boolean isOpposite(Direction d){
@@ -47,7 +48,7 @@ public class Snake {
             case KEY_RIGHT -> move(1, 0);
         }
     }
-    public void updateBody(){
+    private void updateBody(){
         for (int i = bodyLength -1; i >= 0; i--) {
             if (i == 0) {
                 body.get(i).replace(head);
@@ -61,10 +62,6 @@ public class Snake {
         }*/
     }
     public void growBody(){
-        System.out.println("Direction:"+direction);
-        System.out.println("Growing Body, bodyLength="+bodyLength);
-        System.out.println(head);
-        System.out.println(body);
         Position tail = bodyLength == 0 ? head : body.get(bodyLength-1);
         switch (direction) {
             case KEY_UP :
@@ -81,8 +78,6 @@ public class Snake {
                 break;
         }
         bodyLength++;
-        System.out.println("After digesting, bodyLength="+bodyLength);
-        System.out.println(body);
     }
 
     public Direction getDirection() {
@@ -93,8 +88,18 @@ public class Snake {
         this.direction = direction;
     }
 
-    protected void move(int deltaX, int deltaY){
+    private void move(int deltaX, int deltaY){
         head.x = Math.floorMod(head.x + deltaX, xMax);
         head.y = Math.floorMod(head.y + deltaY, yMax);
+    }
+
+    public boolean checkCollision(){
+        for (Position b: body){
+            if(b.isOverlap(head)){
+                isAlive = false;
+                return true;
+            }
+        }
+        return false;
     }
 }
