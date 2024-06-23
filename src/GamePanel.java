@@ -63,7 +63,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(!game.isGameOver()){
+        if(game.state == GameElement.GameState.PLAYING){
             game.update();
             repaint();
         }
