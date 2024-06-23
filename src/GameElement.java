@@ -53,7 +53,6 @@ public class GameElement {
                 for(Position body: this.snake.body){
                     if(body.isOverlap(new Position(x,y))){
                         overlap=true;
-                        System.out.println("Overlap with body at x:"+body.x+", y:"+body.y);
                         break;
                     }
                 }

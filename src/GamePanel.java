@@ -35,18 +35,27 @@ public class GamePanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        // Panel Grid to help visualise the grid
-        /*g2d.setColor(Color.GRAY);
-        for (int i = 0; i < PANEL_HEIGHT / UNIT_SIZE; i++) {
-            g2d.drawLine(0, i*UNIT_SIZE, PANEL_WIDTH, i*UNIT_SIZE);
-            g2d.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, PANEL_HEIGHT);
-        }*/
+        if(game.state == GameElement.GameState.GAME_OVER){
+            renderGameOver(g2d);
+            renderScore(g2d);
+        } else if(game.state == GameElement.GameState.PLAYING){
+            renderFoods(g2d);
+            renderSnake(g2d);
+            renderScore(g2d);
+        }
 
+        Toolkit.getDefaultToolkit().sync(); // necessary for linux users to draw  and animate image correctly
+        g.dispose();
+    }
+
+    private void renderFoods(Graphics2D g2d){
         g2d.setColor(Color.RED);
         for (Food food: game.foods){
             g2d.fillOval(food.position.x * UNIT_SIZE, food.position.y* UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
         }
+    }
 
+    private void renderSnake(Graphics2D g2d){
         g2d.setColor(new Color(0, 128, 128));
         for (Position body: game.snake.body){
             //System.out.println("Drawing Body X: "+body.x+", Y: "+body.y);
@@ -56,16 +65,32 @@ public class GamePanel extends JPanel implements ActionListener {
         //System.out.println("Drawing Head X: "+game.snake.head.x+", Y: "+game.snake.head.y);
         g2d.setColor(new Color(0, 192, 128));
         g2d.fillRect(game.snake.head.x * UNIT_SIZE, game.snake.head.y * UNIT_SIZE, UNIT_SIZE, UNIT_SIZE);
-
-        Toolkit.getDefaultToolkit().sync(); // necessary for linux users to draw  and animate image correctly
-        g.dispose();
     }
 
+    private void renderGameOver(Graphics2D g2d){
+        String text = "Game Over";
+        g2d.setColor(Color.RED);
+        g2d.setFont(new Font("Algerian", Font.BOLD, 75));
+        FontMetrics metrics = getFontMetrics(g2d.getFont());
+        g2d.drawString(text, (PANEL_WIDTH - metrics.stringWidth(text))/2, PANEL_HEIGHT/2);
+    }
+
+    private void renderScore(Graphics2D g2d){
+        String text = "Score: " + GameElement.SCORE;
+        g2d.setColor(Color.RED);
+        g2d.setFont(new Font("Algerian", Font.BOLD, 18));
+        FontMetrics metrics = getFontMetrics(g2d.getFont());
+        g2d.drawString(text, (PANEL_WIDTH - metrics.stringWidth(text))/2, g2d.getFont().getSize());
+
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if(game.state == GameElement.GameState.PLAYING){
             game.update();
-            repaint();
+        }
+        repaint();
+        if(game.state == GameElement.GameState.GAME_OVER){
+            timer.stop();
         }
     }
 
@@ -103,4 +128,5 @@ public class GamePanel extends JPanel implements ActionListener {
         }
         return !snake.getDirection().isOpposite(keyDirection);
     }
+
 }

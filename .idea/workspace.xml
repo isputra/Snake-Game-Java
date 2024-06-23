@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d236e63-7a8a-4c75-93fd-e8569ffcbc5d" name="Changes" comment="Add game over.&#10;Check for collision within the snake.">
+    <list default="true" id="9d236e63-7a8a-4c75-93fd-e8569ffcbc5d" name="Changes" comment="Handle state game over.&#10;Add score.&#10;Refactor snake, food renderer.">
+      <changelist_data name="Ikhsan Sigma Putra" email="ikhsan_sz@yahoo.com" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +21,24 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Ikhsan Sigma Putra &lt;ikhsan_sz@yahoo.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -100,7 +117,31 @@
       <option name="project" value="LOCAL" />
       <updated>1719093772078</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Introduce game state.&#10;Check for overlap while generating random food.">
+      <option name="closed" value="true" />
+      <created>1719142163535</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719142163535</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Introduce game state.&#10;Check for overlap while generating random food.">
+      <option name="closed" value="true" />
+      <created>1719142213412</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719142213412</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Handle state game over.&#10;Add score.&#10;Refactor snake, food renderer.">
+      <option name="closed" value="true" />
+      <created>1719151021121</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719151021121</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,17 +158,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialize the Game.&#10;Add JFrame, JPanel, GameElement, Snake, and Food Class.&#10;Simple snake gam initiated with a snake and food.&#10;Snake can move around and food is generated randomly.&#10;Snake can eat food and score will be updated. Another food spawn upon eating.&#10;Direction validation.&#10;No collision detection yet." />
     <MESSAGE value="Add game over.&#10;Check for collision within the snake." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add game over.&#10;Check for collision within the snake." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GameElement.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Introduce game state.&#10;Check for overlap while generating random food." />
+    <MESSAGE value="Handle state game over.&#10;Add score.&#10;Refactor snake, food renderer." />
+    <option name="LAST_COMMIT_MESSAGE" value="Handle state game over.&#10;Add score.&#10;Refactor snake, food renderer." />
   </component>
 </project>
